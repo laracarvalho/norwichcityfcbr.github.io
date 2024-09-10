@@ -6,10 +6,14 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Create report file
-        run: date +%s > report.txt
-      - name: Commit report
+      - uses: actions/checkout@v4
+      - name: Update Website
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          ref: ${{ github.head_ref }}
+      - run: node build.js
+      - name: Commit changes
         run: |
           git config --global user.name 'Github Actions'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
