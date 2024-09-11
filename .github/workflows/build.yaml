@@ -29,6 +29,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           GIT_STATUS=$(git status --porcelain)
           echo $GIT_STATUS
+          git pull
           git add .
           git commit -am "AUTO: Updated site."
           git push
