@@ -33,6 +33,10 @@ jobs:
           git config user.email 'lucasjorgedclt@gmail.com'
           git add .
           git commit -am "AUTO: Updated site."
+      - name: Update pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: . # this is root of project
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
